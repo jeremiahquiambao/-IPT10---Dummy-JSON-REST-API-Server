@@ -17,7 +17,7 @@ $users = [
   'email' => 'jeremiah@gmail.com',
   'phone' => '0999 999 524',
   'bloodGroup' => 'AB+',
-  'image' => 'thumbnail.jpg'
+  'image' => 'https://i.pinimg.com/originals/fc/89/2e/fc892e478e36064312516ff775f4eaba.jpg'
 	]
 ];
 
@@ -40,7 +40,7 @@ $user = json_decode($body);
 
 <body>
 <div class = "container"> 
-        <table class="table table-border">
+        <table class="table table-bordered border-dark">    
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">ID</th>
@@ -68,5 +68,6 @@ $user = json_decode($body);
  </table>
 </div>
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

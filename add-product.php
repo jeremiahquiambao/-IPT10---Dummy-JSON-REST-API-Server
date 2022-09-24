@@ -36,33 +36,33 @@ $product = json_decode($body);
 </head>
 
 <body>
-    <div class= "container-fluid">
+    <div class = "container-fluid"> 
+        <h1>Add Product</h1>
         <table class ="table table-bordered border-dark">
-            <thead class ="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Brand</th>
-                    <th>Category</th>
-                    <th>Gallery</th>
-                </tr>
+            <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Gallery</th>
+                    </tr>
             </thead>
-
             <tbody>
                 <tr>
                     <th scope="row" href="single-product.php"><?= $product->id ?></th>
                     <td><?=$product->title?></td>
                     <td><?=$product->description?></td>
-                    <td><?=$product->price?></td
+                    <td><?=$product->price?></td>
                     <td><?=$product->brand?></td>
                     <td><?=$product->category?></td>
-                    <td><?="<img width=110px; height=90x; src=" . $product->thumbnail .">";?></td>
-
+                    <td><img src="<?=$product->thumbnail?>" width="100" length="100"></td>
                 </tr>
             </tbody>
         </table>
-    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>

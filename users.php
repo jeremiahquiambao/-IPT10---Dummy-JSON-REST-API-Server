@@ -7,16 +7,14 @@ $client = new Client([
         'base_uri' => 'https://dummyjson.com/'
 ]);
 
-$products = [
-  'json' => [
-  'title' => 'iPhone 14'
-  ]
-];
-
-$response = $client->put('https://dummyjson.com/products/1', $products);
+$response = $client->get("users");
 $code = $response->getStatusCode();
 $body = $response->getBody();
-$product = json_decode($body);
+$x = json_decode($body);
+
+$users = $x->users;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +23,7 @@ $product = json_decode($body);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Product</title>
+    <title>Add Product</title>
      <!-- Bootstrap CSS -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
@@ -33,28 +31,35 @@ $product = json_decode($body);
 <body>
     <div class = "container-fluid"> 
         <table class ="table table-bordered border-dark">
-            <thead class ="table-dark"> 
+            <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Brand</th>
-                    <th>Category</th>
-                    <th>Gallery</th>
+                    <th>Complete Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Blood Type</th>
+                    <th>Image</th>
                 </tr>
             </thead>
-
-            <tbody>
+            
+            <tbody class="table table-success table-striped">
+                <?php
+                foreach ($users as $info):
+                ?>
                 <tr>
-                    <th href="single-product.php"><?= $product->id ?></th>
-                    <td><?= $product->title?></td>
-                    <td><?= $product->description?></td>
-                    <td><?= $product->price?></td>
-                    <td><?= $product->brand?></td>
-                    <td><?= $product->category?></td>
-                    <td><?="<img width=110px; height=90x; src=" . $product->thumbnail .">";?></td>
+                    <td><?=$info->id;?></td>
+                    <td><?=$info->firstName . ' '.  $info->lastName;?></td>
+                    <td><?=$info->age;?></td>
+                    <td><?=$info->gender;?></td>
+                    <td><?=$info->email;?></td>
+                    <td><?=$info->phone;?></td>
+                    <td><?=$info->bloodGroup;?></td>
+                    <td><?="<img width=150x; height=150x; src=" . $info->image .">";?></td>
+                    
                 </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
 
